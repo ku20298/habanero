@@ -383,7 +383,7 @@ var isTitle = true;
 var mode = 0;
 var first = false;
 
-var toDelete = false;
+var toDelete = [];
 
 
 var word = document.getElementById("word");
@@ -407,7 +407,11 @@ window.onload = function() {
         for(let i = 0; i < indexesString.length; i++) {
             indexes[2][i] = Number(indexesString[i]);
         }
-        buttonP.textContent = "ピリ辛("+ String(indexesString.length) + "語)";
+        let l = indexes[2].length
+        if (indexes[2][0] == 0) {
+            indexes[2] = [];
+        }
+        buttonP.textContent = "ピリ辛("+ String(l) + "語)";
     }
 };
 
@@ -482,8 +486,9 @@ buttonB.onclick = function() {
     back.textContent = "戻";
 
     for(let i = 0; i < indexes[2].length; i++) {
-        if (i > 1000 && indexes[2][i] == indexes[1][wordIndexB]) {
+        if (indexes[2][i] - 1000 == indexes[1][wordIndexB]) {
             pirikara.style.color = "red"
+            console.log("HHHHHHHHHHHHHHHHHH")
         }
     }
 
@@ -492,9 +497,9 @@ buttonB.onclick = function() {
 }
 
 buttonP.onclick = function() {
-    toDelete = false
+    toDelete = [];
     if (String(localStorage.getItem("indexesP")) == "null") {
-        shuffle(2);
+        // shuffle(2);
     }else {
         let indexesText = String(localStorage.getItem("indexesP"));
         let indexesString = indexesText.split(",");
@@ -503,7 +508,8 @@ buttonP.onclick = function() {
         }
         wordIndexP = Number(localStorage.getItem("wordIndexP"))
     }
-    if (indexes[2].length > 0) {
+    console.log(indexes[2].length)
+    if (indexes[2].length > 0 && indexes[2][0] != 0) {
         title1.hidden = true;
         title2.hidden = true;
         buttonA.hidden = true;
@@ -554,7 +560,7 @@ pirikara.onclick = function(e) {
             pirikara.style.color = "black"
         }else if (mode == 3 && pirikara.style.color == "red") {
             // indexes[2].delete(wordIndexP, 1);
-            toDelete = true;
+            toDelete.push(indexes[2][wordIndexP])
             pirikara.style.color = "black";
         }
 
@@ -578,90 +584,60 @@ back.onclick = function(e) {
         word.textContent = "";
         counter.textContent = "";
         mode = 0; 
-        buttonP.textContent = "ピリ辛("+ String(indexes[2].length) + "語)";
+
+        for(let i = 0; i < toDelete.length; i++) {
+            indexes[2].splice(indexes[2].findIndex(e => e === toDelete[i]), 1)
+        }
+
+        toDelete = [];
+
+        localStorage.setItem("indexesP", indexes[2])
+
+        let l = indexes[2].length
+        if (indexes[2][0] == 0) {
+            // l = 0
+            indexes[2] = [];
+        }
+        buttonP.textContent = "ピリ辛("+ String(l) + "語)";
     }
 }
 
-/*
+
 reverse.onclick = function(e) {
     e.stopPropagation();
     if (!isTitle) {
-        if (mode == 1 && wordIndexA != 0) {
-            if (first) {
-                first = false;
-            }else {
-                wordIndexA --;
-                pirikara.style.color = "black"
-                for(let i = 0; i < indexes[2].length; i++) {
-                    if (indexes[2][i] == wordIndexA) {
-                        pirikara.style.color = "red"
-                    }
+        if (mode == 1 && wordIndexA > 0) {    
+            wordIndexA --;
+            pirikara.style.color = "black"
+            
+            for(let i = 0; i < indexes[2].length; i++) {
+                if (indexes[2][i] == indexes[0][wordIndexA]) {
+                    pirikara.style.color = "red"
                 }
             }
-            console.log(wordIndexA)
+            
             word.textContent = words[0][indexes[0][wordIndexA]];
             counter.textContent = String(wordIndexA+1) + "/168";
             localStorage.setItem("wordIndexA", wordIndexA);
+        }else if (mode == 2 && wordIndexB > 0) {    
+            wordIndexB --;
+            pirikara.style.color = "black"
 
-            if (wordIndexA >= words[0].length) {
-                title1.hidden = false;
-                title2.hidden = false;
-                buttonA.hidden = false;
-                buttonB.hidden = false;
-                buttonP.hidden = false;
-
-                pirikara.hidden = true;
-                reverse.hidden = true;
-                back.hidden = true;
-                isTitle = true;
-                word.textContent = "";
-                counter.textContent = "";
-                wordIndexA = 0;
-                mode = 0;
-                localStorage.removeItem("indexesA")
-                localStorage.removeItem("wordIndexA")
-            }
-        }else if (mode == 2 && wordIndexB != 0) {
-            if (first) {
-                first = false;
-            }else {
-                wordIndexB --;
-                pirikara.style.color = "black"
-                for(let i = 0; i < indexes[2].length; i++) {
-                    if (i > 1000 && indexes[2][i] == wordIndexB) {
-                        pirikara.style.color = "red"
-                    }
+            for(let i = 0; i < indexes[2].length; i++) {
+                if (indexes[2][i] - 1000 == indexes[1][wordIndexB]) {
+                    pirikara.style.color = "red"
                 }
             }
+
             word.textContent = words[1][indexes[1][wordIndexB]];
             counter.textContent = String(wordIndexB+1) + "/197";
             localStorage.setItem("wordIndexB", wordIndexB);
-            if (wordIndexB >= words[1].length) {
-                title1.hidden = false;
-                title2.hidden = false;
-                buttonA.hidden = false;
-                buttonB.hidden = false;
-                buttonP.hidden = false;
+        }
+        /*
+        else if (mode == 3 && wordIndexP != 0) {  
+            wordIndexP --;
+            pirikara.style.color = "red"
 
-                pirikara.hidden = true;
-                reverse.hidden = true;
-                back.hidden = true;
-                isTitle = true;
-                word.textContent = "";
-                counter.textContent = "";
-                wordIndexB = 0;
-                mode = 0;
-                localStorage.removeItem("indexesB")
-                localStorage.removeItem("wordIndexB")
-            }
-        }else if (mode == 3 && wordIndexP != 0) {
-            console.log(words[0][indexes[2][wordIndexP]])
-            if (first) {
-                first = false;
-            }else {
-                wordIndexP --;
-                pirikara.style.color = "red"
-            }
             if (indexes[2][wordIndexP] > 1000) {
                 word.textContent = words[1][indexes[2][wordIndexP] - 1000];
             }else if (indexes[2][wordIndexP] < 1000) {
@@ -671,30 +647,11 @@ reverse.onclick = function(e) {
             counter.textContent = String(wordIndexP+1) + "/" + String(indexes[2].length);
 
             localStorage.setItem("wordIndexP", wordIndexP);
-            if (wordIndexP >= indexes[2].length) {
-                title1.hidden = false;
-                title2.hidden = false;
-                buttonA.hidden = false;
-                buttonB.hidden = false;
-                buttonP.hidden = false;
-
-                pirikara.hidden = true;
-                reverse.hidden = true;
-                back.hidden = true;
-                isTitle = true;
-                word.textContent = "";
-                counter.textContent = "";
-                wordIndexP = 0;
-                mode = 0;
-                // localStorage.removeItem("indexesP")
-                localStorage.removeItem("wordIndexP")
-            }
         }
+        */
     }
-
-
 }
-*/
+
 
 document.onclick = function() {
     if (!isTitle) {
@@ -705,7 +662,7 @@ document.onclick = function() {
                 wordIndexA ++;
                 pirikara.style.color = "black"
                 for(let i = 0; i < indexes[2].length; i++) {
-                    if (i < 1000 && indexes[2][i] == wordIndexA) {
+                    if (indexes[2][i] == wordIndexA) {
                         pirikara.style.color = "red"
                     }
                 }
@@ -739,7 +696,7 @@ document.onclick = function() {
                 wordIndexB ++;
                 pirikara.style.color = "black"
                 for(let i = 0; i < indexes[2].length; i++) {
-                    if (i > 1000 && indexes[2][i] == wordIndexB) {
+                    if (indexes[2][i] - 1000 == wordIndexB) {
                         pirikara.style.color = "red"
                     }
                 }
@@ -771,10 +728,6 @@ document.onclick = function() {
                 shuffle(2);
                 localStorage.setItem("indexesP", indexes[2])
             }else {
-                if (toDelete) {
-                    indexes[2].splice(wordIndexP, 1);
-                    localStorage.setItem("indexesP", indexes[2])
-                }
                 wordIndexP ++;
                 pirikara.style.color = "red"
             }
@@ -804,6 +757,21 @@ document.onclick = function() {
                 mode = 0;
                 // localStorage.removeItem("indexesP")
                 localStorage.removeItem("wordIndexP")
+
+                for(let i = 0; i < toDelete.length; i++) {
+                    indexes[2].splice(indexes[2].findIndex(e => e === toDelete[i]), 1)
+                }
+        
+                toDelete = [];
+        
+                localStorage.setItem("indexesP", indexes[2])
+        
+        
+                let l = indexes[2].length
+                if (indexes[2][0] == 0) {
+                    indexes[2] = [];
+                }
+                buttonP.textContent = "ピリ辛("+ String(l) + "語)";
             }
         }
     }
