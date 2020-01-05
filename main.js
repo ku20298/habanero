@@ -826,7 +826,25 @@ data.onclick = function() {
             wordIndexP = 0;
             localStorage.removeItem("indexesP")
             localStorage.removeItem("wordIndexP")
-        }
+
+            indexes[2] = [];
+            buttonP.textContent = "ピリ辛(0語)";
+
+            // if (String(localStorage.getItem("indexesP")) == "null") {
+            //     buttonP.textContent = "ピリ辛(0語)";
+            // }else {
+            //     let indexesText = String(localStorage.getItem("indexesP"));
+            //     let indexesString = indexesText.split(",");
+            //     for(let i = 0; i < indexesString.length; i++) {
+            //         indexes[2][i] = Number(indexesString[i]);
+            //     }
+            //     let l = indexes[2].length
+            //     if (indexes[2][0] == 0) {
+            //         indexes[2] = [];
+            //     }
+            //     buttonP.textContent = "ピリ辛("+ String(l) + "語)";
+            // }
+        } 
     }
 }
 
