@@ -388,7 +388,7 @@ var words = [
         "あるじまうけ",
         "あるは",
         "あるやうこそは",
-        "あれかにもあれず",
+        "あれかにもあらず",
         "いざたまへ",
         "いちのひと",
         "いづら",
@@ -605,7 +605,7 @@ var buttonC = document.getElementById("buttonC");
 var buttonP = document.getElementById("buttonP");
 
 var data = document.getElementById("data");
-
+var usage = document.getElementById("usage");
 
 window.onload = function() {
     if (String(localStorage.getItem("indexesP")) == "null") {
@@ -622,6 +622,10 @@ window.onload = function() {
         }
         buttonP.textContent = "ピリ辛("+ String(l) + "語)";
     }
+    console.log(words[0].length)
+    console.log(words[1].length)
+    console.log(words[2].length)
+
 };
 
 buttonA.onclick = function() {
@@ -641,7 +645,8 @@ buttonA.onclick = function() {
     buttonB.hidden = true;
     buttonC.hidden = true;
     buttonP.hidden = true;
-    data.hidden = true; 
+    data.hidden = true;
+    usage.hidden = true;
     pirikara.hidden = false;
     reverse.hidden = false;
     back.hidden = false;
@@ -684,8 +689,9 @@ buttonB.onclick = function() {
     buttonA.hidden = true;
     buttonB.hidden = true;
     buttonC.hidden = true;
-    buttonP.hidden = true;    
+    buttonP.hidden = true;
     data.hidden = true;    
+    usage.hidden = true;    
     pirikara.hidden = false;
     reverse.hidden = false;
     back.hidden = false;
@@ -728,6 +734,7 @@ buttonC.onclick = function() {
     buttonC.hidden = true;
     buttonP.hidden = true;
     data.hidden = true;
+    usage.hidden = true;
     pirikara.hidden = false;
     reverse.hidden = false;
     back.hidden = false;
@@ -773,6 +780,7 @@ buttonP.onclick = function() {
         buttonC.hidden = true;
         buttonP.hidden = true;
         data.hidden = true;
+        usage.hidden = true;
         pirikara.hidden = false;
         reverse.hidden = false;
         back.hidden = false;
@@ -848,6 +856,24 @@ data.onclick = function() {
     }
 }
 
+usage.onclick = function() {
+    alert(`★★★★★使い方★★★★★
+①すべての単語にイラストがついていて、ゴロ合わせで楽しく覚えられる古文単語帳をGETしよう！
+
+②とりあえずパラパラめくってお気に入りのゴロ合わせを探してみよう！
+
+③まずは重要単語から！Aと書いてある単語を単語帳で見ていこう！覚えようと意識しないで、ゴロとイラストを見るだけでOK！
+
+③A(168語)を押して、画面をタップするとAの単語がランダムに出てくるので、出てきた単語のゴロを正確に言えるか？とイラストを思い出せるか？をチェックしていこう！完璧じゃなければすぐに単語帳で調べよう！
+
+④「覚えにくい」「ややこしい」「何回も間違えている」そんな単語があれば、「辛」ボタンを押そう！すると「ピリ辛」にその単語が追加されるので、苦手な単語をまとめられる！
+
+⑤B、Cもやってみよう！何人かで競い合ってゴロを素早く言う会を開催するのもGOOD！
+
+その他：「逆」を押すとひとつ前の単語に戻る　「戻」を押すとタイトル画面に戻る
+途中までで中断してサイトを閉じてもデータが保存されるので続きから再開できます！`)
+}
+
 pirikara.onclick = function(e) {
     e.stopPropagation();
 
@@ -890,6 +916,7 @@ back.onclick = function(e) {
         buttonC.hidden = false;
         buttonP.hidden = false;
         data.hidden = false; 
+        usage.hidden = false; 
         pirikara.hidden = true;
         reverse.hidden = true;
         back.hidden = true;
@@ -999,7 +1026,7 @@ document.onclick = function() {
                 }
             }
             word.textContent = words[0][indexes[0][wordIndexA]];
-            counter.textContent = String(wordIndexA+1) + "/168";
+            counter.textContent = String(wordIndexA+1) + "/169";
             localStorage.setItem("wordIndexA", wordIndexA);
 
             if (wordIndexA >= words[0].length) {
@@ -1010,6 +1037,7 @@ document.onclick = function() {
                 buttonC.hidden = false;
                 buttonP.hidden = false;
                 data.hidden = false; 
+                usage.hidden = false; 
                 pirikara.hidden = true;
                 reverse.hidden = true;
                 back.hidden = true;
@@ -1046,6 +1074,7 @@ document.onclick = function() {
                 buttonC.hidden = false;
                 buttonP.hidden = false;
                 data.hidden = false; 
+                usage.hidden = false; 
                 pirikara.hidden = true;
                 reverse.hidden = true;
                 back.hidden = true;
@@ -1087,6 +1116,7 @@ document.onclick = function() {
                 buttonC.hidden = false;
                 buttonP.hidden = false;
                 data.hidden = false; 
+                usage.hidden = false; 
                 pirikara.hidden = true;
                 reverse.hidden = true;
                 back.hidden = true;
@@ -1129,7 +1159,7 @@ document.onclick = function() {
                 }
             }
             word.textContent = words[2][indexes[3][wordIndexC]];
-            counter.textContent = String(wordIndexC+1) + "/198";
+            counter.textContent = String(wordIndexC+1) + "/201";
             localStorage.setItem("wordIndexC", wordIndexC);
             if (wordIndexC >= words[2].length) {
                 title1.hidden = false;
@@ -1139,6 +1169,7 @@ document.onclick = function() {
                 buttonC.hidden = false;
                 buttonP.hidden = false;
                 data.hidden = false; 
+                usage.hidden = false; 
                 pirikara.hidden = true;
                 reverse.hidden = true;
                 back.hidden = true;

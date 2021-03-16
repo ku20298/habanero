@@ -9,6 +9,8 @@
         body {
             user-select: none;
             background-color: #fafbfd;
+            background-image: url(images/bgtile.png);
+            background-position: center;
         }
         #title1{
             text-align: center;
@@ -87,6 +89,12 @@
             font-size: 24px;
             position: absolute;
         }
+        #usage{
+            top: 8%;
+            margin-left: 50%;
+            font-size: 24px;
+            position: absolute;
+        }
     </style>
     <link rel="apple-touch-icon-precomposed" href="images/app-icon-192.png"/>
     <meta name="google-site-verification" content="PoDSH1PSBzWuzkcwTq2nmYKkxok0BG5Q3wEuLFbkz2Q" />
@@ -94,16 +102,20 @@
 <body>
     <h1 id="title1">ハバネロ</h1>
     <h1 id="title2">古文単語</h1>
-    <h1 id="buttonA">A(168語)</h1>
+    <h1 id="buttonA">A(169語)</h1>
     <h1 id="buttonB">B(197語)</h1>
-    <h1 id="buttonC">C(198語)</h1>
+    <h1 id="buttonC">C(201語)</h1>
     <h1 id="buttonP">ピリ辛(361語)</h1>
     <div id="counter"></div>
     <div id="word"></div>
     <span id="pirikara"></span>
     <span id="reverse"></span>
     <span id="back"></span>
-    <span id="data">データ消去</span>
+    <div>
+        <span id="data">データ消去</span>
+        <span id="usage">使い方</span>
+    </div>
+    
 </body>
 <script type="text/javascript" src="main.js"></script>
 
