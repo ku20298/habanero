@@ -622,9 +622,9 @@ window.onload = function() {
         }
         buttonP.textContent = "ピリ辛("+ String(l) + "語)";
     }
-    console.log(words[0].length)
-    console.log(words[1].length)
-    console.log(words[2].length)
+    // console.log(words[0].length)
+    // console.log(words[1].length)
+    // console.log(words[2].length)
 
 };
 
