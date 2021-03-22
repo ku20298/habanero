@@ -2,7 +2,7 @@
 	"short_name": "ハバネロ",
 	"name": "ハバネロ古文単語",
 	"display": "standalone",
-    	"orientation": "portrait-primary",
+    "orientation": "portrait-primary",
 	"start_url": "index.html",
 	"icons": [
 		{
