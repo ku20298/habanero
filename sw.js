@@ -27,3 +27,5 @@ self.addEventListener('fetch', function(event) {
 			})
 	);
 });
+
+self.addEventListener('fetch', function(event) {});
