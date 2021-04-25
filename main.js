@@ -622,23 +622,9 @@ window.onload = function() {
         }
         buttonP.textContent = "ピリ辛("+ String(l) + "語)";
     }
-    // console.log(words[0].length)
-    // console.log(words[1].length)
-    // console.log(words[2].length)
-
 };
 
-buttonA.onclick = function() {
-    if (String(localStorage.getItem("indexesA")) == "null") {
-        shuffle(0);
-    }else {
-        let indexesText = String(localStorage.getItem("indexesA"));
-        let indexesString = indexesText.split(",");
-        for(let i = 0; i < indexesString.length; i++) {
-            indexes[0][i] = Number(indexesString[i]);
-        }
-        wordIndexA = Number(localStorage.getItem("wordIndexA"))
-    }
+function toWordsScene() {
     title1.hidden = true;
     title2.hidden = true;
     buttonA.hidden = true;
@@ -651,24 +637,41 @@ buttonA.onclick = function() {
     reverse.hidden = false;
     back.hidden = false;
     isTitle = false;
-    mode = 1;
+
     first = true;
-    word.textContent = words[0][indexes[0][wordIndexA]];
-    counter.textContent = String(wordIndexA+1) + "/168";
 
     pirikara.textContent = "辛";
     reverse.textContent = "逆";
     back.textContent = "戻";
+}
+
+buttonA.onclick = function() {
+    if (String(localStorage.getItem("indexesA")) == "null") {
+        shuffle(0);
+    }else {
+        let indexesText = String(localStorage.getItem("indexesA"));
+        let indexesString = indexesText.split(",");
+        for(let i = 0; i < indexesString.length; i++) {
+            indexes[0][i] = Number(indexesString[i]);
+        }
+        wordIndexA = Number(localStorage.getItem("wordIndexA"))
+    }
+
+    mode = 1;
+    toWordsScene();
+    
+    word.textContent = words[0][indexes[0][wordIndexA]];
+    counter.textContent = String(wordIndexA+1) + "/168";
 
     for(let i = 0; i < indexes[2].length; i++) {
         if (i < 1000 && indexes[2][i] == indexes[0][wordIndexA]) {
-            pirikara.style.color = "red"
-            console.log("red from buttona.onclick")
+            pirikara.style.color = "red";
+            console.log("red from buttona.onclick");
         }
     }
 
-    localStorage.setItem("indexesA", indexes[0])
-    localStorage.setItem("wordIndexA", wordIndexA)
+    localStorage.setItem("indexesA", indexes[0]);
+    localStorage.setItem("wordIndexA", wordIndexA);
 }
 
 //indexesPが保存されない
@@ -682,28 +685,14 @@ buttonB.onclick = function() {
         for(let i = 0; i < indexesString.length; i++) {
             indexes[1][i] = Number(indexesString[i]);
         }
-        wordIndexB = Number(localStorage.getItem("wordIndexB"))
+        wordIndexB = Number(localStorage.getItem("wordIndexB"));
     }
-    title1.hidden = true;
-    title2.hidden = true;
-    buttonA.hidden = true;
-    buttonB.hidden = true;
-    buttonC.hidden = true;
-    buttonP.hidden = true;
-    data.hidden = true;    
-    usage.hidden = true;    
-    pirikara.hidden = false;
-    reverse.hidden = false;
-    back.hidden = false;
-    isTitle = false;
+
     mode = 2;
-    first = true;
+    toWordsScene();
+
     word.textContent = words[1][indexes[1][wordIndexB]];
     counter.textContent = String(wordIndexB+1) + "/197";
-
-    pirikara.textContent = "辛";
-    reverse.textContent = "逆";
-    back.textContent = "戻";
 
     for(let i = 0; i < indexes[2].length; i++) {
         if (indexes[2][i] - 1000 == indexes[1][wordIndexB]) {
@@ -727,26 +716,13 @@ buttonC.onclick = function() {
         }
         wordIndexC = Number(localStorage.getItem("wordIndexC"))
     }
-    title1.hidden = true;
-    title2.hidden = true;
-    buttonA.hidden = true;
-    buttonB.hidden = true;
-    buttonC.hidden = true;
-    buttonP.hidden = true;
-    data.hidden = true;
-    usage.hidden = true;
-    pirikara.hidden = false;
-    reverse.hidden = false;
-    back.hidden = false;
-    isTitle = false;
+    
     mode = 4;
-    first = true;
+    toWordsScene();
+    
     word.textContent = words[2][indexes[3][wordIndexC]];
     counter.textContent = String(wordIndexC+1) + "/199";
 
-    pirikara.textContent = "辛";
-    reverse.textContent = "逆";
-    back.textContent = "戻";
 
     for(let i = 0; i < indexes[2].length; i++) {
         if (indexes[2][i] - 2000 == indexes[3][wordIndexC]) {
@@ -773,20 +749,9 @@ buttonP.onclick = function() {
     }
 
     if (indexes[2].length > 0 && indexes[2][0] != 0) {
-        title1.hidden = true;
-        title2.hidden = true;
-        buttonA.hidden = true;
-        buttonB.hidden = true;
-        buttonC.hidden = true;
-        buttonP.hidden = true;
-        data.hidden = true;
-        usage.hidden = true;
-        pirikara.hidden = false;
-        reverse.hidden = false;
-        back.hidden = false;
-        isTitle = false;
+        
         mode = 3;
-        first = true;
+        toWordsScene();
     
         if (indexes[2][wordIndexP] > 1000) {
             word.textContent = words[0][indexes[1][wordIndexP - 1000]];
@@ -795,10 +760,6 @@ buttonP.onclick = function() {
         }
         
         counter.textContent = String(wordIndexP+1) + "/" + String(indexes[2].length);
-    
-        pirikara.textContent = "辛";
-        reverse.textContent = "逆";
-        back.textContent = "戻";
     
         pirikara.style.color = "red"
         console.log("red from buttonp.onclick")
@@ -878,7 +839,7 @@ usage.onclick = function() {
 
 ★★★★★現在の世界記録★★★★★
 〇A単語最初の10語のゴロを言うタイムアタック
-　14.73秒`)
+　14.73秒`);
 }
 
 pirikara.onclick = function(e) {
@@ -913,24 +874,28 @@ pirikara.onclick = function(e) {
     }
 }
 
+function toTitleScene() {
+    title1.hidden = false;
+    title2.hidden = false;
+    buttonA.hidden = false;
+    buttonB.hidden = false;
+    buttonC.hidden = false;
+    buttonP.hidden = false;
+    data.hidden = false; 
+    usage.hidden = false; 
+    pirikara.hidden = true;
+    reverse.hidden = true;
+    back.hidden = true;
+    isTitle = true;
+    word.textContent = "";
+    counter.textContent = "";
+    mode = 0; 
+}
+
 back.onclick = function(e) {
     e.stopPropagation();
     if (!isTitle) {
-        title1.hidden = false;
-        title2.hidden = false;
-        buttonA.hidden = false;
-        buttonB.hidden = false;
-        buttonC.hidden = false;
-        buttonP.hidden = false;
-        data.hidden = false; 
-        usage.hidden = false; 
-        pirikara.hidden = true;
-        reverse.hidden = true;
-        back.hidden = true;
-        isTitle = true;
-        word.textContent = "";
-        counter.textContent = "";
-        mode = 0; 
+        toTitleScene();
 
         for(let i = 0; i < toDelete.length; i++) {
             indexes[2].splice(indexes[2].findIndex(e => e === toDelete[i]), 1)
@@ -1037,22 +1002,9 @@ document.onclick = function() {
             localStorage.setItem("wordIndexA", wordIndexA);
 
             if (wordIndexA >= words[0].length) {
-                title1.hidden = false;
-                title2.hidden = false;
-                buttonA.hidden = false;
-                buttonB.hidden = false;
-                buttonC.hidden = false;
-                buttonP.hidden = false;
-                data.hidden = false; 
-                usage.hidden = false; 
-                pirikara.hidden = true;
-                reverse.hidden = true;
-                back.hidden = true;
-                isTitle = true;
-                word.textContent = "";
-                counter.textContent = "";
                 wordIndexA = 0;
-                mode = 0;
+                tiTitleScene();
+
                 localStorage.removeItem("indexesA")
                 localStorage.removeItem("wordIndexA")
             }
@@ -1074,34 +1026,21 @@ document.onclick = function() {
             counter.textContent = String(wordIndexB+1) + "/197";
             localStorage.setItem("wordIndexB", wordIndexB);
             if (wordIndexB >= words[1].length) {
-                title1.hidden = false;
-                title2.hidden = false;
-                buttonA.hidden = false;
-                buttonB.hidden = false;
-                buttonC.hidden = false;
-                buttonP.hidden = false;
-                data.hidden = false; 
-                usage.hidden = false; 
-                pirikara.hidden = true;
-                reverse.hidden = true;
-                back.hidden = true;
-                isTitle = true;
-                word.textContent = "";
-                counter.textContent = "";
                 wordIndexB = 0;
-                mode = 0;
-                localStorage.removeItem("indexesB")
-                localStorage.removeItem("wordIndexB")
+                toTitleScene();
+
+                localStorage.removeItem("indexesB");
+                localStorage.removeItem("wordIndexB");
             }
         }else if (mode == 3) {
             if (first) {
                 first = false;
                 shuffle(2);
-                localStorage.setItem("indexesP", indexes[2])
+                localStorage.setItem("indexesP", indexes[2]);
             }else {
                 wordIndexP ++;
-                pirikara.style.color = "red"
-                console.log("red from document.onclick p")
+                pirikara.style.color = "red";
+                console.log("red from document.onclick p");
             }
 
             if (indexes[2][wordIndexP] > 2000) {
@@ -1116,52 +1055,39 @@ document.onclick = function() {
 
             localStorage.setItem("wordIndexP", wordIndexP);
             if (wordIndexP >= indexes[2].length) {
-                title1.hidden = false;
-                title2.hidden = false;
-                buttonA.hidden = false;
-                buttonB.hidden = false;
-                buttonC.hidden = false;
-                buttonP.hidden = false;
-                data.hidden = false; 
-                usage.hidden = false; 
-                pirikara.hidden = true;
-                reverse.hidden = true;
-                back.hidden = true;
-                isTitle = true;
-                word.textContent = "";
-                counter.textContent = "";
                 wordIndexP = 0;
-                mode = 0;
+                toTitleScene();
+
                 // localStorage.removeItem("indexesP")
-                localStorage.removeItem("wordIndexP")
+                localStorage.removeItem("wordIndexP");
 
                 for(let i = 0; i < toDelete.length; i++) {
-                    indexes[2].splice(indexes[2].findIndex(e => e === toDelete[i]), 1)
+                    indexes[2].splice(indexes[2].findIndex(e => e === toDelete[i]), 1);
                 }
         
                 toDelete = [];
         
-                localStorage.setItem("indexesP", indexes[2])
+                localStorage.setItem("indexesP", indexes[2]);
         
         
-                let l = indexes[2].length
+                let l = indexes[2].length;
                 if (indexes[2][0] == 0) {
                     indexes[2] = [];
                 }
                 buttonP.textContent = "ピリ辛("+ String(l) + "語)";
 
-                pirikara.style.color = "black"
+                pirikara.style.color = "black";
             }
         }else if (mode == 4) {
             if (first) {
                 first = false;
             }else {
                 wordIndexC ++;
-                pirikara.style.color = "black"
+                pirikara.style.color = "black";
                 for(let i = 0; i < indexes[2].length; i++) {
                     if (indexes[2][i] - 2000 == indexes[3][wordIndexC]) {
-                        pirikara.style.color = "red"
-                        console.log("red from document.onclick c")
+                        pirikara.style.color = "red";
+                        console.log("red from document.onclick c");
                     }
                 }
             }
@@ -1185,8 +1111,8 @@ document.onclick = function() {
                 counter.textContent = "";
                 wordIndexC = 0;
                 mode = 0;
-                localStorage.removeItem("indexesC")
-                localStorage.removeItem("wordIndexC")
+                localStorage.removeItem("indexesC");
+                localStorage.removeItem("wordIndexC");
             }
         }
     }
@@ -1196,7 +1122,7 @@ document.onclick = function() {
 var shuffle = function(n) {
     for (var i = indexes[n].length - 1; i >= 0; i--) {
         // 0~iのランダムな数値を取得
-        var rand = Math.floor( Math.random() * ( i + 1 ) );
+        var rand = Math.floor(Math.random() * (i+1));
       
         // 配列の数値を入れ替える
         [indexes[n][i], indexes[n][rand]] = [indexes[n][rand], indexes[n][i]];
