@@ -19,13 +19,19 @@ startBtn.onclick = function() {
     let lvCheck = document.getElementsByName('lv');
     if (lvCheck.item(0).checked) {
         sessionStorage.setItem('level', '0');
-    }else if (lvCheck.item(0).checked) {
-        sessionStorage.setItem('level', '1');
     }else if (lvCheck.item(1).checked) {
-        sessionStorage.setItem('level', '2');
+        sessionStorage.setItem('level', '1');
     }else if (lvCheck.item(2).checked) {
+        sessionStorage.setItem('level', '2');
+    }else if (lvCheck.item(3).checked) {
         sessionStorage.setItem('level', '3');
+    }
 
+    let hardCheck = document.getElementsByName('hard');
+    if (hardCheck.item(0).checked) {
+        sessionStorage.setItem('time', '30');
+    }else if (hardCheck.item(1).checked) {
+        sessionStorage.setItem('time', '15');
     }
 }
 

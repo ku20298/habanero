@@ -601,6 +601,9 @@ window.onload = function() {
     word1.textContent = "6"
     word2.textContent = "6"
 
+    life1.textContent = sessionStorage.getItem("time")
+    life2.textContent = sessionStorage.getItem("time")
+
     level = Number(sessionStorage.getItem("level"));
     // word1.textContent = sessionStorage.getItem("level")
     // reduceLife();
@@ -643,6 +646,15 @@ pass1.onclick = function(e) {
     if (isStart && !isEnd) {
         word1.textContent = tmpwords[Math.floor(Math.random() * tmpwords.length)]
         life1.textContent = String(Number(life1.textContent) - 2);
+        if (Number(life1.textContent) <= 0) {
+            // word2.style.color = "red";
+            life1.textContent = "0";
+            is1 = true;
+            if (word1.textContent != "アウト") {
+                out++;
+                word1.textContent = "アウト";
+            }
+        }
     }
     
 }
@@ -651,7 +663,16 @@ pass2.onclick = function(e) {
     e.stopPropagation();
     if (isStart && !isEnd) {
         word2.textContent = tmpwords[Math.floor(Math.random() * tmpwords.length)]
-        life3.textContent = String(Number(life3.textContent) - 2);
+        life2.textContent = String(Number(life2.textContent) - 2);
+        if (Number(life2.textContent) <= 0) {
+            // word2.style.color = "red";
+            life2.textContent = "0";
+            is2 = true;
+            if (word2.textContent != "アウト") {
+                out++;
+                word2.textContent = "アウト";
+            }
+        }
     }
     
 }
