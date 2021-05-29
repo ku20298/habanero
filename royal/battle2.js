@@ -752,10 +752,10 @@ function reduceLife() {
 
     if (out == 1) {
         if (!is1) {
-            word1.textContent = "辛勝"
+            word1.textContent = "勝ち"
             word1.style.color = "red"
         }else if (!is2) {
-            word2.textContent = "辛勝"
+            word2.textContent = "勝ち"
             word2.style.color = "red"
         }
         isEnd = true;
