@@ -770,27 +770,27 @@ buttonP.onclick = function() {
 }
 
 data.onclick = function() {
-    var result1 = confirm("Aのデータを消しますか？");
+    var result1 = confirm("Aのデータを消しますか？消したら最初からになります。");
     if (result1) {
         wordIndexA = 0;
         localStorage.removeItem("indexesA")
         localStorage.removeItem("wordIndexA")
     }
-    var result2 = confirm("Bのデータを消しますか？");
+    var result2 = confirm("Bのデータを消しますか？消したら最初からになります。");
     if (result2) {
         wordIndexB = 0;
         localStorage.removeItem("indexesB")
         localStorage.removeItem("wordIndexB")
     }
-    var result3 = confirm("Cのデータを消しますか？");
+    var result3 = confirm("Cのデータを消しますか？消したら最初からになります。");
     if (result3) {
         wordIndexC = 0;
         localStorage.removeItem("indexesC")
         localStorage.removeItem("wordIndexC")
     }
-    var result4 = confirm("ピリ辛のデータを消しますか？");
+    var result4 = confirm("ピリ辛のデータを消しますか？ピリ辛に設定した単語が0語になります。");
     if (result4) {
-        var result5 = confirm("本当にピリ辛のデータを消しますか？");
+        var result5 = confirm("本当にピリ辛のデータを消しますか？ピリ辛に設定した単語が0語になります。");
         if (result5) {
             wordIndexP = 0;
             localStorage.removeItem("indexesP")
@@ -825,13 +825,13 @@ usage.onclick = function() {
 
 ③まずは重要単語から！Aと書いてある単語を単語帳で見ていこう！覚えようと意識しないで、ゴロとイラストを見たり、口ずさんだりするだけでOK！
 
-③A(169語)を押して、画面をタップするとAの単語がランダムに出てくるので、「出てきた単語のゴロを”正確に”言えるか？」と「イラストを思い出せるか？」をチェックしていこう！完璧じゃなければすぐに単語帳で調べよう！
+④A(169語)を押して、画面をタップするとAの単語がランダムに出てくるので、「出てきた単語のゴロを”正確に”言えるか？」と「イラストを思い出せるか？」をチェックしていこう！完璧じゃなければすぐに単語帳で調べよう！
 
-④「覚えにくい」「ややこしい」「何回も間違えている」そんな単語があれば、「辛」ボタンを押そう！すると「ピリ辛」にその単語が追加されるので、苦手な単語をまとめられる！
+⑤「覚えにくい」「ややこしい」「何回も間違えている」そんな単語があれば、「辛」ボタンを押そう！すると「ピリ辛」にその単語が追加されるので、苦手な単語をまとめられる！
 
-⑤B、Cもやってみよう！何人かで競い合ってゴロを素早く言う会を開催するのもGOOD！
+⑥B、Cもやってみよう！何人かで競い合ってゴロを素早く言う会を開催するのもGOOD！
 
-⑥実際に古文を読んでみよう！自然とゴロが出てくるはず！ゴロは古文読解の潤滑油！「どんな内容の文章なのか」に集中できるようになる！
+⑦実際に古文を読んでみよう！自然とゴロが出てくるはず！ゴロは古文読解の潤滑油！「どんな内容の文章なのか」に集中できるようになる！
 
 その他：「逆」を押すとひとつ前の単語に戻る　「戻」を押すとタイトル画面に戻る
 途中までで中断してサイトを閉じてもデータが保存されるので続きから再開できます！
