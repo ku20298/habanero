@@ -602,6 +602,8 @@ var is2 = false
 var is3 = false
 var isEnd = false
 
+var counter = 0
+
 window.onload = function() {
     word1.textContent = "6"
     word2.textContent = "6"
@@ -824,6 +826,19 @@ function reduceLife() {
     }
 
     if (!isEnd) {
-        setTimeout(reduceLife, 1000)
+        let d = 1000
+        if (counter < 10) {
+            d = 1000
+        }else if (counter < 20) {
+            d = 800
+        }else if (counter < 30) {
+            d = 600
+        }else if (counter < 40) {
+            d = 400
+        }else {
+            d = 200
+        }
+        setTimeout(reduceLife, d)
+        counter++
     }
 }
