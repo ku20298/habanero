@@ -29,9 +29,9 @@ startBtn.onclick = function() {
 
     let hardCheck = document.getElementsByName('hard');
     if (hardCheck.item(0).checked) {
-        sessionStorage.setItem('time', '30');
+        sessionStorage.setItem("time", '30');
     }else if (hardCheck.item(1).checked) {
-        sessionStorage.setItem('time', '15');
+        sessionStorage.setItem("time", '15');
     }
 }
 
