@@ -882,18 +882,20 @@ function reduceLife() {
     }
 
     if (!isEnd) {
+            
         let d = 1000
         if (counter < 30) {
             d = 1000
         }else if (counter < 60) {
-            d = 800
+            d = 900
         }else if (counter < 90) {
-            d = 600
+            d = 800
         }else if (counter < 120) {
-            d = 400
+            d = 700
         }else {
-            d = 200
+            d = 600
         }
+        console.log(counter, d)
         setTimeout(reduceLife, d)
         counter++
     }
