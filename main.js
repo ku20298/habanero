@@ -606,6 +606,7 @@ var buttonP = document.getElementById("buttonP");
 
 var data = document.getElementById("data");
 var usage = document.getElementById("usage");
+var royal = document.getElementById("royal")
 
 window.onload = function() {
     if (String(localStorage.getItem("indexesP")) == "null") {
@@ -633,6 +634,7 @@ function toWordsScene() {
     buttonP.hidden = true;
     data.hidden = true;
     usage.hidden = true;
+    royal.hidden = true;
     pirikara.hidden = false;
     reverse.hidden = false;
     back.hidden = false;
@@ -882,7 +884,8 @@ function toTitleScene() {
     buttonC.hidden = false;
     buttonP.hidden = false;
     data.hidden = false; 
-    usage.hidden = false; 
+    usage.hidden = false;
+    royal.hidden = false;
     pirikara.hidden = true;
     reverse.hidden = true;
     back.hidden = true;
@@ -1102,7 +1105,8 @@ document.onclick = function() {
                 buttonC.hidden = false;
                 buttonP.hidden = false;
                 data.hidden = false; 
-                usage.hidden = false; 
+                usage.hidden = false;
+                royal.hidden = false;
                 pirikara.hidden = true;
                 reverse.hidden = true;
                 back.hidden = true;
