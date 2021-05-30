@@ -8,8 +8,10 @@ startBtn.onclick = function() {
     let plCheck = document.getElementsByName('pl');
 
     if (plCheck.item(0).checked) {
-        location.href='battle2.html'
+        location.href='battle1.html'
     }else if (plCheck.item(1).checked) {
+        location.href='battle2.html'
+    }else if (plCheck.item(2).checked) {
         location.href='battle3.html'
     }else if (plCheck.item(2).checked) {
         location.href='battle4.html'
