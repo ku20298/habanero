@@ -13,7 +13,7 @@ startBtn.onclick = function() {
         location.href='battle2.html'
     }else if (plCheck.item(2).checked) {
         location.href='battle3.html'
-    }else if (plCheck.item(2).checked) {
+    }else if (plCheck.item(3).checked) {
         location.href='battle4.html'
     }
 

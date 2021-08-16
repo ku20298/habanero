@@ -585,6 +585,10 @@ var pass1 = document.getElementById("pass1");
 
 var modoru = document.getElementById("modoru");
 
+var passed1 = document.getElementById("passed1");
+
+var pirikara1 = document.getElementById("pirikara1");
+
 var level;
 var isStart = false;
 var tmpwords
@@ -647,7 +651,11 @@ pass1.onclick = function(e) {
             if (word1.textContent != "アウト") {
                 out++;
                 word1.textContent = "アウト";
-            }
+                passed1.style.visibility = "visible";
+                pirikara1.style.visibility = "visible";
+            } 
+        }else {
+            passed1.textContent += word1.textContent + "　";
         }
     }
     
@@ -688,6 +696,9 @@ function reduceLife() {
         if (word1.textContent != "アウト") {
             out++;
             word1.textContent = "アウト";
+            passed1.style.visibility = "visible";
+            pirikara1.style.visibility = "visible";
+
         }
     }
 

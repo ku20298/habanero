@@ -96,6 +96,14 @@
             z-index: 3;
         }
 
+        #passed1, #passed2 {
+            visibility: hidden;
+        }
+        #pirikara1, #pirikara2 {
+            visibility: hidden;
+            color: red;
+        }
+
     </style>
 </head>
 <body>
@@ -104,7 +112,9 @@
             
             <br><span id="life1"></span><br>
             <button id="pass1">パス</button>
-            <div id="word1"></div>  
+            <div id="word1"></div>
+            <div id="pirikara1">ピリ辛リスト</div>
+            <div id="passed1"></div>
         </div> 
         
     </div>
@@ -113,8 +123,9 @@
         <div class="player2">
             <br><span id="life2"></span><br>
             <button id="pass2">パス</button>
-
             <div id="word2"></div>
+            <div id="pirikara2">ピリ辛リスト</div>
+            <div id="passed2"></div>
 
         </div>
     </div>

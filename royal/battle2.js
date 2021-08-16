@@ -589,6 +589,12 @@ var pass2 = document.getElementById("pass2");
 
 var modoru = document.getElementById("modoru");
 
+var passed1 = document.getElementById("passed1");
+var passed2 = document.getElementById("passed2");
+
+var pirikara1 = document.getElementById("pirikara1");
+var pirikara2 = document.getElementById("pirikara2");
+
 var level;
 var isStart = false;
 var tmpwords
@@ -654,7 +660,11 @@ pass1.onclick = function(e) {
             if (word1.textContent != "アウト") {
                 out++;
                 word1.textContent = "アウト";
-            }
+                passed1.style.visibility = "visible";
+                pirikara1.style.visibility = "visible";
+            } 
+        }else {
+            passed1.textContent += word1.textContent + "　";
         }
     }
     
@@ -672,7 +682,11 @@ pass2.onclick = function(e) {
             if (word2.textContent != "アウト") {
                 out++;
                 word2.textContent = "アウト";
+                passed2.style.visibility = "visible";
+                pirikara2.style.visibility = "visible";
             }
+        }else {
+            passed2.textContent += word2.textContent + "　";
         }
     }
     
@@ -717,6 +731,8 @@ function reduceLife() {
         if (word1.textContent != "アウト") {
             out++;
             word1.textContent = "アウト";
+            passed1.style.visibility = "visible";
+            pirikara1.style.visibility = "visible";
         }
     }
 
@@ -731,6 +747,8 @@ function reduceLife() {
         if (word2.textContent != "アウト") {
             out++;
             word2.textContent = "アウト";
+            passed2.style.visibility = "visible";
+            pirikara2.style.visibility = "visible";
         }
     }
 
@@ -754,9 +772,13 @@ function reduceLife() {
         if (!is1) {
             word1.textContent = "勝ち"
             word1.style.color = "red"
+            passed1.style.visibility = "visible";
+            pirikara1.style.visibility = "visible";
         }else if (!is2) {
             word2.textContent = "勝ち"
             word2.style.color = "red"
+            passed2.style.visibility = "visible";
+            pirikara2.style.visibility = "visible";
         }
         isEnd = true;
         modoru.hidden = false;

@@ -596,6 +596,16 @@ var pass4 = document.getElementById("pass4");
 
 var modoru = document.getElementById("modoru");
 
+var passed1 = document.getElementById("passed1");
+var passed2 = document.getElementById("passed2");
+var passed3 = document.getElementById("passed3");
+var passed4 = document.getElementById("passed4");
+
+var pirikara1 = document.getElementById("pirikara1");
+var pirikara2 = document.getElementById("pirikara2");
+var pirikara3 = document.getElementById("pirikara3");
+var pirikara4 = document.getElementById("pirikara4");
+
 var level;
 var isStart = false;
 var tmpwords
@@ -690,10 +700,13 @@ pass1.onclick = function(e) {
             if (word1.textContent != "アウト") {
                 out++;
                 word1.textContent = "アウト";
-            }
+                passed1.style.visibility = "visible";
+                pirikara1.style.visibility = "visible";
+            } 
+        }else {
+            passed1.textContent += word1.textContent + "　";
         }
     }
-    
 }
 
 pass2.onclick = function(e) {
@@ -708,10 +721,13 @@ pass2.onclick = function(e) {
             if (word2.textContent != "アウト") {
                 out++;
                 word2.textContent = "アウト";
+                passed2.style.visibility = "visible";
+                pirikara2.style.visibility = "visible";
             }
+        }else {
+            passed2.textContent += word2.textContent + "　";
         }
     }
-    
 }
 
 pass3.onclick = function(e) {
@@ -726,10 +742,13 @@ pass3.onclick = function(e) {
             if (word3.textContent != "アウト") {
                 out++;
                 word3.textContent = "アウト";
+                passed3.style.visibility = "visible";
+                pirikara3.style.visibility = "visible";
             }
+        }else {
+            passed3.textContent += word3.textContent + "　";
         }
     }
-    
 }
 
 pass4.onclick = function(e) {
@@ -744,16 +763,18 @@ pass4.onclick = function(e) {
             if (word4.textContent != "アウト") {
                 out++;
                 word4.textContent = "アウト";
+                passed4.style.visibility = "visible";
+                pirikara4.style.visibility = "visible";
             }
+        }else {
+            passed4.textContent += word4.textContent + "　";
         }
     }
     
 }
 
 
-
 function countDown() {
-
     if (Number(word1.textContent) > 0) {
         word1.textContent = String(Number(word1.textContent) - 1);
         word2.textContent = String(Number(word2.textContent) - 1);
@@ -798,6 +819,8 @@ function reduceLife() {
         if (word1.textContent != "アウト") {
             out++;
             word1.textContent = "アウト";
+            passed1.style.visibility = "visible";
+            pirikara1.style.visibility = "visible";
         }
     }
 
@@ -812,6 +835,8 @@ function reduceLife() {
         if (word2.textContent != "アウト") {
             out++;
             word2.textContent = "アウト";
+            passed2.style.visibility = "visible";
+            pirikara2.style.visibility = "visible";
         }
     }
 
@@ -826,6 +851,8 @@ function reduceLife() {
         if (word3.textContent != "アウト") {
             out++;
             word3.textContent = "アウト";
+            passed3.style.visibility = "visible";
+            pirikara3.style.visibility = "visible";
         }
     }
 
@@ -841,6 +868,8 @@ function reduceLife() {
         if (word4.textContent != "アウト") {
             out++;
             word4.textContent = "アウト";
+            passed4.style.visibility = "visible";
+            pirikara4.style.visibility = "visible";
         }
     }
     // if (life2.textContent = "0") {
@@ -863,15 +892,23 @@ function reduceLife() {
         if (!is1) {
             word1.textContent = "勝ち"
             word1.style.color = "red"
+            passed1.style.visibility = "visible";
+            pirikara1.style.visibility = "visible";
         }else if (!is2) {
             word2.textContent = "勝ち"
             word2.style.color = "red"
+            passed2.style.visibility = "visible";
+            pirikara2.style.visibility = "visible";
         }else if (!is3) {
             word3.textContent = "勝ち"
             word3.style.color = "red"
+            passed3.style.visibility = "visible";
+            pirikara3.style.visibility = "visible";
         }else if (!is4) {
             word4.textContent = "勝ち"
             word4.style.color = "red"
+            passed4.style.visibility = "visible";
+            pirikara4.style.visibility = "visible";
         }
         isEnd = true;
         modoru.hidden = false;
