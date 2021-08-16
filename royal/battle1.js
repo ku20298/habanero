@@ -642,6 +642,9 @@ pass1.onclick = function(e) {
     // console.log("KKKKKKKK")
     e.stopPropagation();
     if (isStart && !isEnd) {
+        if (Number(life1.textContent) > 0) {
+            passed1.textContent += word1.textContent + "　";
+        }
         word1.textContent = tmpwords[Math.floor(Math.random() * tmpwords.length)]
         life1.textContent = String(Number(life1.textContent) - 2);
         if (Number(life1.textContent) <= 0) {
@@ -654,8 +657,6 @@ pass1.onclick = function(e) {
                 passed1.style.visibility = "visible";
                 pirikara1.style.visibility = "visible";
             } 
-        }else {
-            passed1.textContent += word1.textContent + "　";
         }
     }
     

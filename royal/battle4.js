@@ -691,6 +691,9 @@ pass1.onclick = function(e) {
     // console.log("KKKKKKKK")
     e.stopPropagation();
     if (isStart && !isEnd) {
+        if (Number(life1.textContent) > 0) {
+            passed1.textContent += word1.textContent + "　";
+        }
         word1.textContent = tmpwords[Math.floor(Math.random() * tmpwords.length)]
         life1.textContent = String(Number(life1.textContent) - 2);
         if (Number(life1.textContent) <= 0) {
@@ -703,8 +706,6 @@ pass1.onclick = function(e) {
                 passed1.style.visibility = "visible";
                 pirikara1.style.visibility = "visible";
             } 
-        }else {
-            passed1.textContent += word1.textContent + "　";
         }
     }
 }
@@ -712,6 +713,9 @@ pass1.onclick = function(e) {
 pass2.onclick = function(e) {
     e.stopPropagation();
     if (isStart && !isEnd) {
+        if (Number(life2.textContent) > 0) {
+            passed2.textContent += word2.textContent + "　";
+        }
         word2.textContent = tmpwords[Math.floor(Math.random() * tmpwords.length)]
         life2.textContent = String(Number(life2.textContent) - 2);
         if (Number(life2.textContent) <= 0) {
@@ -724,8 +728,6 @@ pass2.onclick = function(e) {
                 passed2.style.visibility = "visible";
                 pirikara2.style.visibility = "visible";
             }
-        }else {
-            passed2.textContent += word2.textContent + "　";
         }
     }
 }
@@ -733,6 +735,9 @@ pass2.onclick = function(e) {
 pass3.onclick = function(e) {
     e.stopPropagation();
     if (isStart && !isEnd) {
+        if (Number(life3.textContent) > 0) {
+            passed3.textContent += word3.textContent + "　";
+        }
         word3.textContent = tmpwords[Math.floor(Math.random() * tmpwords.length)]
         life3.textContent = String(Number(life3.textContent) - 2);
         if (Number(life3.textContent) <= 0) {
@@ -745,8 +750,6 @@ pass3.onclick = function(e) {
                 passed3.style.visibility = "visible";
                 pirikara3.style.visibility = "visible";
             }
-        }else {
-            passed3.textContent += word3.textContent + "　";
         }
     }
 }
@@ -754,6 +757,9 @@ pass3.onclick = function(e) {
 pass4.onclick = function(e) {
     e.stopPropagation();
     if (isStart && !isEnd) {
+        if (Number(life4.textContent) > 0) {
+            passed4.textContent += word4.textContent + "　";
+        }
         word4.textContent = tmpwords[Math.floor(Math.random() * tmpwords.length)]
         life4.textContent = String(Number(life4.textContent) - 2);
         if (Number(life4.textContent) <= 0) {
@@ -766,8 +772,6 @@ pass4.onclick = function(e) {
                 passed4.style.visibility = "visible";
                 pirikara4.style.visibility = "visible";
             }
-        }else {
-            passed4.textContent += word4.textContent + "　";
         }
     }
     
@@ -800,8 +804,7 @@ function countDown() {
         word1.textContent = tmpwords[Math.floor(Math.random() * tmpwords.length)]
         word2.textContent = tmpwords[Math.floor(Math.random() * tmpwords.length)]
         word3.textContent = tmpwords[Math.floor(Math.random() * tmpwords.length)]
-        word4.textContent = tmpwords[Math.floor(Math.random() * tmpwords.length)]
-        
+        word4.textContent = tmpwords[Math.floor(Math.random() * tmpwords.length)]   
     }
 }
 
